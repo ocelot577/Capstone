@@ -16,9 +16,9 @@ One of the big risks with using Reddit data for this analysis is the user demogr
 ### Data gathering
 To obtain data for my project, I used the PRAW library to scrape Reddit. I initially decided to identify users that frequented the subreddits of 2020 democratic canidates Andrew Yang, Pete Buttigieg, Kamala Harris, Joe Biden, and Bernie Sanders and for each user, grab the last 1,000 comments they had posted on Reddit and what subreddits those comments were on. The idea here being that these subreddits would indicate other interests that these users had. On my third scrape, I decided to add some additional subreddits indicative of the democratic party to the list to also gain insights on democrats who had not posted on the subreddits of one of the five canidates (presumably they either supported a different candidate, were undecided or weren't interested in posting on a candidate subreddit)
 
-[First Scraping Notebook](1_First_Scraping_Notebook.ipynb) - code for my 1st and 2nd scrapes
-[Second Scraping Notebook](2_Second_Scraping_Notebook.ipynb) - code for my 3rd scrape, added a couple subreddits to this scrape since I wanted posts from democrats who hadn't posted on one of the 5 candiate subreddits
-[Combining Scrapes Notebook](3_Combine_Scrapes.ipynb) - used to combine my scrapes into one dataframe
+*[First Scraping Notebook](1_First_Scraping_Notebook.ipynb) - code for my 1st and 2nd scrapes
+*[Second Scraping Notebook](2_Second_Scraping_Notebook.ipynb) - code for my 3rd scrape, added a couple subreddits to this scrape since I wanted posts from democrats who hadn't posted on one of the 5 candiate subreddits
+*[Combining Scrapes Notebook](3_Combine_Scrapes.ipynb) - used to combine my scrapes into one dataframe
 
 ### EDA
 One of the features I wanted to use for my model was subreddits or groups of similar subreddits that my users had posted in. To prevent data leakage, I wanted to make sure these features were created from only my training data set. Thus, I'm forced to define my target column at this stage and perform a train test split. I then identify the subreddits with 1,000 or more comments  from this training dataset and export that to a spreadsheet for evaluation.
