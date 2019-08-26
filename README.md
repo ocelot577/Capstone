@@ -53,6 +53,11 @@ In this notebook, I created a logistic regression classification model using bot
 
 * [Model with both NLP and subreddit features](11_Model_subreddit_&_NLP.ipynb)
 
+### Topic Modeling
+While the NLP models I created earlier allowed me to see what words were strongly associated with Yang supporters, it's not as good at identifying the topics that they're talking about. To analyze this I first created a wordcloud from the r/politics comments from Yang supporters that I created earlier. This only gave me the words of highest frequency though. To look into specific topics, I ended up running a Latent Dirichlet Allocation (LDA) model and grouping the scraped comments into 1 of 4 categories (1 = Trump/Republicans, 2 = debates / other 2020 candiates, 3 = automation/ubi, 4 = debt related)
+
+* [Topic Modeling](12_Topic_Modeling.ipynb)
+
 
 
 
