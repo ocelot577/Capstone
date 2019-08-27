@@ -25,18 +25,18 @@ One of the features I wanted to use for my model was subreddits or groups of sim
 
 * [Create Target Column](04_Create_Target_Column.ipynb) - Notebook used to create the target column
 * [Identify subreddits](05_Subreddit_Group) - Notebook used to identify the most popular subreddits
-* [Spreadsheet of subreddits](fin_subreddit_group.numbers) - Spreadsheet where I analyzed which subreddits to use as features, which ones to group together, and which ones to discard
+* [Spreadsheet of subreddits](fin_subreddit_group.numbers) - Spreadsheet where I analyzed which subreddits to use as features, which ones to group together, and which ones to discard (done if the subreddit didn't correspond to a real-world interest, for example: a comment on r/aww would indicate the user is into cute animals, not terribly useful piece of information for this project)
 
 ### Modeling - Subreddit Features
 Once I identified the subreddits I wanted to use as my features, I created a dataframe of users and their comments only from the subreddits in question. Realizing, I had more subreddit features than desired, I then ran a logistic regression classifier to identify the weakest features and then in a 2nd notebook recreated my dataframe with the weakest features removed. The 2nd logistic regression classifier I ran achieved a score of .7695 which was a small improvement over the baseline of .7368.
 
-Looking at the confusion matrix of my results, I see my true positives are 40 and my false negatives are 140. My goal is to identify features that predict the positive class so I'm really more interested in increasing my true positives even if that increases my false positives so thus I'm training for sensitivity (currently .2222). One way of doing this is to use an oversampling technique on the minority class. I used the Synthetic Minority Over-sampling Technique (SMOTE) to do this. Doing this caused my accuracy score to drop to .6715 but my sensitivity increased to .5778. From this model, I was able to identify a list of subreddit features that indicate if a Reddit user is more or less likely to be an Andrew Yang supporter.
+Analyzing the confusion matrix of my results, I had 40 true positives and 140 false negatives. My goal is to identify features that predict the positive class so I'm really more interested in increasing my true positives even if that increases my false positives so thus I'm training for sensitivity (currently .2222). One way of doing this is to use an oversampling technique on the minority class. I used the Synthetic Minority Over-sampling Technique (SMOTE) to do this. Doing this caused my accuracy score to drop to .6715 but my sensitivity increased to .5778. From this model, I was able to identify a list of subreddit features that indicate if a Reddit user is more or less likely to be an Andrew Yang supporter.
 
 * [Create subreddit features dataframe & 1st model](06_Subreddit_Features_&_First_Model.ipynb)
 * [Remove some features & 2nd model](07_Remove_features_&_2nd_model.ipynb)
 
 ### Modeling - NLP Features
-Next, I wanted to see if I could predict if a user was an Andrew Yang supporter or not based on the words they used on the r/politics subreddit. This could help with the predictive ability of my model and also identify the topics that Yang supporters talk about.
+Next, I wanted to see if I could predict if a user was an Andrew Yang supporter or not based on the words they used on the r/politics subreddit. This could help with the predictive ability of my model and also identify the topics that Yang supporters talk about more than non-Yang supporters.
 
 To do this, I created a dataframe of just the comments from the r/politics subreddit for only the users that I had analyzed in my previous steps. I then combined all of a user's comments on r/politics to a single string. Finally, I cleaned and parsed the data with RegEx to return only word tokens in a string. I did not apply any lemmatization or stop word removal in this step since the stop words that I wanted to remove would depend on what I wanted to do with my NLP data.
 
